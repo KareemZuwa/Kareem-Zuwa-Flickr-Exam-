@@ -19,7 +19,7 @@ async function getData(query) {
     console.log(data.photos.photo[0]);
     //let dataShort = data.photos.photo[0];
     //let getImage = `https://farm${dataShort.farm}.staticflickr.com/${dataShort.server}/${dataShort.id}_${dataShort.secret}.jpg`;
-    //console.log(getImage);
+    console.log(getImage);
 
    //let showThepic = photoInfo.'https://farm'+ photoInfo.farm + '.staticflickr.com/' + photoInfo.server+ '/' +photoInfo.id+ '_' +photoInfo.secret+ '.jpg';
     //showPhotos(data.photos.photo);
