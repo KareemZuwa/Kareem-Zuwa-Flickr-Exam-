@@ -32,8 +32,8 @@ function showPhotos(array) {
         listUrl= `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}.jpg`;
         console.log(listUrl);
         const item = document.createElement('li');
-        //item.classList.add('bilder');
-        item.innerHTML = `<img src="${value.listUrl}" alt="${value.title}"></img>`;
+        item.classList.add('bilder');
+        item.innerHTML = `<img src="${listUrl}" alt="${value.title}"></img>`;
         lista.appendChild(item);
     });
 };
