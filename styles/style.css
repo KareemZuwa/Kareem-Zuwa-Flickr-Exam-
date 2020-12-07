@@ -26,7 +26,7 @@ body {
 }
 
 /*---------------*/
-.form {
+.search-wrapper_form {
     width: auto;
     display: flex;
     justify-content: space-between;
@@ -47,7 +47,7 @@ body {
 }
 /*---------------*/
 
-.lista {
+.pic_list {
     padding: 3rem;
     list-style: none;
     display: flex;
