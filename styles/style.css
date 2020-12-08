@@ -7,7 +7,7 @@ body {
 .header {
     margin: 0 auto;
     height: 6rem;
-    width: 1025px;
+    width: 100vw;;
     display: flex;
     justify-content: center;
 
@@ -20,7 +20,7 @@ body {
 
 .search-wrapper {
     margin: 0 auto;
-    width: 1000px;
+    width:80vw;
     height: auto;
     background:#bdc192;
     padding:2rem;
@@ -36,8 +36,9 @@ body {
 }
 
 .search {
+    margin-right: 2rem;
     height: 3rem;
-    width: 42rem;
+    width: 80vw;
     border-radius: .5rem;
     border: solid white;
 }
@@ -58,12 +59,54 @@ body {
     justify-content: space-around;
 }
 
-.bilder img{
+.pictures img:hover {
+    transform: scale(1.5);
+    border: solid 2px white;
+}
+
+.pictures img{
+    transition: all 1s ease;
+    object-fit: contain;
+   /* 
+   border: solid 2px white;
     width:  200px;
     height: 200px;
     object-fit: contain;
+    */
+
 }
 
 .bilder p {
     color: white;
 }
+
+/*--------//Media-Queries//--------*/
+
+@media screen and (max-width: 430px) {
+    .search {
+        margin-left: -0.7rem;  
+    }
+
+    .button {
+        margin-right: 3.5rem;
+    }  
+}
+@media screen and (max-width: 375px) {
+    .search {
+        margin-left: -1.5rem;  
+    }
+
+    .button {
+        margin-right: 4rem;
+    }  
+}
+@media screen and (max-width: 325px) {
+    .search {
+        margin-left: -3rem;  
+    }
+
+    .button {
+        margin-right: 4rem;
+    }  
+}
+
