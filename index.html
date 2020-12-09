@@ -12,20 +12,31 @@
     </header>
     <section class="search-wrapper">
         <form class="search-wrapper_form">
+
             <input type="text" id="search" class="search">
+
+            <select id="per-page" class="per-page">
+                <option id="10">10</option>
+                <option id="20" selected>20</option>
+                <option id="30">30</option>
+                <option id="40">40</option>
+            </select>
+
             <button class="button" type="submit">SHOW ME THE PHOTOS</button>
         </form>
+
         <ul id="search-wrapper_pic_list" class="search-wrapper_pic_list"></ul>
+        <ul id="search-wrapper-pagination" class="search-wrapper-pagination" data-pagnation="5">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+        </ul>
     </section>
 
     
-    <ul id="pagination" class="pagination" data-pagnation="6">
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-    </ul>
+   
 
     
     <script src="./scripts/main.js"></script>

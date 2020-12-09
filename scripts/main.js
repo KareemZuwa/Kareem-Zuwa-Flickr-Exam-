@@ -3,6 +3,9 @@ const lista = document.querySelector('#search-wrapper_pic_list');
 const form = document.querySelector('.search-wrapper_form');
 const searchTerm = document.querySelector('#search');
 const key = '41adb0f120121d62ff61549e85feab86';
+const perPage = document.querySelector('#per-page');
+console.log(perPage);
+
 
 //Form function för att skriva och söka ord
 form.addEventListener('submit', e => {
@@ -11,9 +14,18 @@ form.addEventListener('submit', e => {
     getData(searchTerm.value);
 });
 
+perPage.addEventListener('change', num => {
+    console.log(num.target.value);
+    picsShown = num.target.value;
+    console.log(picsShown);
+    return picsShown
+})
+
+
+
 //Fetch function som hämtar data från Flickr API
 async function getData(query) {
-    const response = await fetch(`https://www.flickr.com/services/rest/?api_key=${key}&method=flickr.photos.search&text=${query}&per_page=20&page=6&format=json&nojsoncallback=1`);
+    const response = await fetch(`https://www.flickr.com/services/rest/?api_key=${key}&method=flickr.photos.search&text=${query}&per_page=${picsShown}&page=1&format=json&nojsoncallback=1`);
     const data = await response.json();
     console.log(data);
 
@@ -37,7 +49,8 @@ function showPhotos(array) {
 
         const item = document.createElement('li'); //skapar ny list element
         item.classList.add('pictures'); //skapar classer på listelementen
-        item.innerHTML = `<img src="${listUrl}" alt="${value.title}"></img>`; //skapar img taggar
+        item.innerHTML = `<img src="${listUrl}" alt="${value.title}"></img>`; //skapar img taggar<p>${value.title}</p>
         lista.appendChild(item); //lägger till img items på listan
+        console.log(value.title);
     });
 };
