@@ -4,7 +4,6 @@ const form = document.querySelector('.search-wrapper_form');
 const searchTerm = document.querySelector('#search');
 const key = '41adb0f120121d62ff61549e85feab86';
 const perPage = document.querySelector('#per-page');
-console.log(perPage);
 
 
 //Form function för att skriva och söka ord
@@ -14,13 +13,12 @@ form.addEventListener('submit', e => {
     getData(searchTerm.value);
 });
 
+//function för hur många bilder som skall visas
 perPage.addEventListener('change', num => {
-    console.log(num.target.value);
     picsShown = num.target.value;
-    console.log(picsShown);
+    console.log(picsShown);            //consolar valt nummer
     return picsShown
 })
-
 
 
 //Fetch function som hämtar data från Flickr API
