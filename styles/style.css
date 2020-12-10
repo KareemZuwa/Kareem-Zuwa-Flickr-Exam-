@@ -13,8 +13,13 @@ body {
 
 }
 .header h1 {
+    align-self: center;
     text-align: center;
     color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+.header-image {
+    opacity: .7;
 }
 /*-------//-MAIN-//-------*/
 
@@ -80,6 +85,7 @@ body {
     transform: scale(1.5);
     border: solid 2px white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .pictures img{
@@ -133,6 +139,12 @@ body {
     .pictures img:hover {
         transform: scale(1.4);
         border: solid 1px white;
+    }
+    .header-image {
+        align-self: center;
+        opacity: .7;
+        height: 60%;
+        width: 20%;
     }
 }
 @media screen and (max-width: 375px) {

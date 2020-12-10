@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
     <title>Flickr Exam</title>
 </head>
 <body>
     <header class="header">
-        <h1>Flickr Api</h1>
+        <img src="images/flickr.svg" alt="flickr logo" class="header-image">
+        <h1>FLICKR API</h1>
+        <img src="images/flickr.svg" alt="flickr logo" class="header-image">
     </header>
     <main class="search-wrapper">
         <form class="search-wrapper_form">
@@ -27,21 +31,17 @@
 
             <button class="button" type="submit">SHOW ME THE PHOTOS</button>
         </form>
-
+        
         <ul id="search-wrapper_pic_list" class="search-wrapper_pic_list"></ul>
-        <ul id="search-wrapper-pagination" class="search-wrapper-pagination" data-pagnation="5">
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+        <ul id="search-wrapper-pagination" class="search-wrapper-pagination" data-pagination="5">
+            <li><a id="links" href="#">1</a></li>
+            <li><a id="links" href="#">2</a></li>
+            <li><a id="links" href="#">3</a></li>
+            <li><a id="links" href="#">4</a></li>
+            <li><a id="links" href="#">5</a></li>
         </ul>
     </main>
-
-    
    
-
-    
     <script src="./scripts/main.js"></script>
 </body>
 </html>
