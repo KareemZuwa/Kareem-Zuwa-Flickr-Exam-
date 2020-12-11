@@ -75,7 +75,11 @@ function showPhotos(array) {
 //overlay lightbox
 
 let lightBox = (value, title)=> {
-    console.log(value);
-    overLay.innerHTML = `<img src="${value}" alt="${title}"></img>`; //skapar lightbox image
+    console.log(title);
+    overLay.innerHTML = `<img src="${value}" alt="${title}"><p>${title}</p></img>`; //skapar lightbox image
     overLay.classList.toggle('search-wrapper_overlay-hide');
+    overLay.addEventListener('click', ()=> {
+        overLay.classList.add('search-wrapper_overlay-hide');
+        
+    })
 }
