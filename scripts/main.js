@@ -4,8 +4,10 @@ const form = document.querySelector('.search-wrapper_form');        //form fält
 const searchTerm = document.querySelector('#search');               //search knappen
 const key = '41adb0f120121d62ff61549e85feab86';                     //API nyckeln från flickr
 const perPage = document.querySelector('#per-page');                //option väljaren för hur många bilder som skall visas på en sida  
-const chooseSide = document.querySelectorAll('#links');             //länkar för att välja sida         
-let pageSide= 1;                                                   //Genererar vald sida
+const chooseSide = document.querySelectorAll('#links');             //länkar för att välja sida 
+const overLay = document.getElementById('search-wrapper_overlay');  //Overlay elementet      
+let pageSide= 1;                                                    //Genererar vald sida
+
 
 //Form function för att skriva och söka ord
 form.addEventListener('submit', e => {
@@ -40,7 +42,6 @@ async function getData(query) {
     });
 
     console.log(data.photos.page)
-
     //console.log(data.photos.photo);   //consolar data från API
     //Skickar argument i form av json data till functionen showPhotos
     showPhotos(data.photos.photo);
@@ -55,12 +56,26 @@ function showPhotos(array) {
     array.forEach(value => {
         
         listUrl= `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}_m.jpg`;
-        //console.log(listUrl); //Sparar och consolar Url som skall generera bilder på webbappen.skrivs över med value värden från loopen
+        console.log(listUrl); //Sparar och consolar Url som skall generera bilder på webbappen.skrivs över med value värden från loopen
+        //listUrlBig=`https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}_b.jpg`;
 
         const item = document.createElement('li'); //skapar ny list element
+
+        item.addEventListener('click', ()=> { //kalla lightbox funktionen
+            lightBox(`https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}_b.jpg`, value.title);
+
+        })
+
         item.classList.add('pictures'); //skapar classer på listelementen
         item.innerHTML = `<img src="${listUrl}" alt="${value.title}"></img>`; //skapar img taggar<p>${value.title}</p>
         lista.appendChild(item); //lägger till img items på listan
         //console.log(value.title);
     });
 };
+//overlay lightbox
+
+let lightBox = (value, title)=> {
+    console.log(value);
+    overLay.innerHTML = `<img src="${value}" alt="${title}"></img>`; //skapar lightbox image
+    overLay.classList.toggle('search-wrapper_overlay-hide');
+}
