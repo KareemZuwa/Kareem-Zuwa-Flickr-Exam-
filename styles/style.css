@@ -31,7 +31,6 @@ body {
     padding:2rem;
     border-radius: 1rem;
 }
-
 /*----form-functionen-med-search-perpage-och-searchbutton----*/
 .search-wrapper_form {
     width: auto;
@@ -64,7 +63,7 @@ body {
     background-color: #f0f4c3;
     color:black;
 }
-/*----galleri----*/
+/*----GALLERI-galleri-GALLERI---*/
 
 .search-wrapper_pic_list {
     padding: 3rem;
@@ -75,35 +74,29 @@ body {
 }
 
 .pictures img:hover {
-    transform: scale(1.5);
-    border: solid 2px white;
-    border-radius: 5px;
     cursor: pointer;
 }
-
-
-.pictures img{
+.pictures img {
     transition: all 1s ease;
 }
-/*---Overlay----*/
 
+/*---LIGHTBOX--Overlay-fönstret-LIGHTBOX---*/
 #search-wrapper_overlay {
     margin-top: 3rem;
-    display: block;
+    display: flex;
+    justify-content: space-between;
     height: 100%;
     width: 100%;
-    text-align:center ;
+    text-align:center;
     overflow: auto;
     background: rgba(0, 0, 0, 0.475);
     border: solid white;  
 }
-
 #search-wrapper_overlay img {
     padding:0;
     margin-top: 1.5rem;
     position:relative;
 }
-
 .search-wrapper_overlay-hide {
     display: none !important;
 }
@@ -114,8 +107,34 @@ body {
     font-size: 20px;
     letter-spacing: 2px;
     text-align: center; 
+}
+/*---Wrapper för bilden som genereras i Lightbox---*/
+#image-wrapper {
+    display: block;
+}
+#image-wrapper img {
+    width: 100%;
+    height: auto;
+}
 
+/*----Arrows-in-LIghtbox---*/
+.left-arrow:hover,
+.right-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.53);
+}
 
+.left-arrow, .right-arrow {
+  cursor: pointer;
+  position: absolute;
+  align-self: center;
+  margin-bottom: 5rem;
+  padding: 20px;
+  color: white;
+  transition: 0.6s ease;
+  border-radius: 0 10px 10px 0;
+}
+.right-arrow {
+    border-radius: 10px 0 0 10px;
 }
 
 /*----pagination-styles----*/
@@ -137,23 +156,33 @@ body {
 }
 
 /*--------//Media-Queries//--------*/
+@media screen and (max-width: 768px) {
+    .left-arrow, .right-arrow {
+        height: 50px;
+        width: 50px;
+    }
+
+}
 
 @media screen and (max-width: 430px) {
+    #search-wrapper_overlay {
+        display: none;
+    }
     .search {
         margin-left: -3.64rem;  
     }
     .button {
         margin-right: 3.5rem;
     }  
-    .pictures img:hover {
-        transform: scale(1.4);
-        border: solid 1px white;
-    }
     .header-image {
         align-self: center;
         opacity: .7;
         height: 60%;
         width: 20%;
+    }
+    .pictures img:hover {
+        transform: scale(1.4);
+        border: solid 2px white;
     }
 }
 @media screen and (max-width: 375px) {
@@ -163,11 +192,7 @@ body {
     }
     .button {
         margin-right: 4rem;
-    } 
-    .pictures img:hover {
-        transform: scale(1.3);
-        border: solid 1px white;
-    } 
+    }
     .per-page {
         margin-right:1rem;
     }
@@ -176,17 +201,15 @@ body {
     .search {
         margin-left: -4rem; 
         margin-right: 0rem;
-     
     }
     .button {
         margin-right: 4rem;
     }
-    .pictures img:hover {
-        transform: scale(1.1);
-        border: solid 1px white;
-    }
     .per-page {
         margin-right:0;
     }
+    .pictures img:hover {
+        transform: scale(1.2);
+        border: solid 1.5px white;
+    }
 }
-
