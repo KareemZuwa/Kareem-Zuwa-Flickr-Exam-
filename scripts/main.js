@@ -10,7 +10,7 @@ const leftArrow = document.querySelector('.left-arrow');             //vänster 
 const rightArrow = document.querySelector('.right-arrow');          //höger pil (next knapp)  
 let pageSide= 1;                                                    //Genererar vald sida
 
-
+//----------------------------------------------//
 //Form function för att skriva och söka ord
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -27,33 +27,37 @@ perPage.addEventListener('change', num => {
     return picsShown
 });
 
+//----------------------------------------------//
 //Fetch function som hämtar data från Flickr API
 async function getData(query) {
     const response = await fetch(`https://www.flickr.com/services/rest/?api_key=${key}&method=flickr.photos.search&text=${query}&per_page=${picsShown}&page=${pageSide}&format=json&nojsoncallback=1`);
     const data = await response.json();
-    console.log(data);
+    //console.log(data); consolar json data mottagen från flickr API
 
     chooseSide.forEach((link) => {
         pageSide= '';
         link.addEventListener('click', ()=> {
             pageSide = link.innerHTML;
             getData(query);
-            console.log(pageSide);
+            console.log(pageSide);      //consolar vilken sida som visas
             return pageSide
             })
     });
-    //console.log(data.photos.photo);   //consolar data från API
+    //console.log(data.photos.photo);   //consolar values från data.photos.photo från API
+
     //Skickar argument i form av json data till functionen showPhotos
     showPhotos(data.photos.photo);
 };
 
+//----------------------------------------------//
 //Function för att visa bilderna
 function showPhotos(array) {
-    console.log(array)
-    
-    lista.innerHTML ='';            //rensar listan inför varje sökning
+    console.log(array)                  //consolar så jag ser att mina argument har följt med från API:t
+
+    lista.innerHTML ='';                //rensar listan inför varje sökning
     //itererar genom array av json.data.photos.photo[0],[1],[2] osv...
     array.forEach(value => {
+        //console.log(value);
         
         listUrl= `https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}_m.jpg`;
         //console.log(listUrl); //Sparar och consolar Url som skall generera bilder på webbappen.skrivs över med value värden från loopen
@@ -61,37 +65,52 @@ function showPhotos(array) {
 
         const item = document.createElement('li'); //skapar ny list element
 
-        item.addEventListener('click', ()=> { //kalla lightbox funktionen
+        item.addEventListener('click', ()=> { //kalla på lightbox funktionen
             lightBox(`https://farm${value.farm}.staticflickr.com/${value.server}/${value.id}_${value.secret}_b.jpg`, value.title);
+            if (window.innerWidth > 430) {
+                window.scrollTo(0,200);
+            }
+            
         })
 
         item.classList.add('pictures'); //skapar classer på listelementen
         item.innerHTML = `<img src="${listUrl}" alt="${value.title}"></img>`; //skapar img taggar<p>${value.title}</p>
-        lista.appendChild(item); //lägger till img items på listan
-        //console.log(lista);
-        //prev och Next knapparna på lightboxen
-        //sliderArrows(array);
+        lista.appendChild(item);    //lägger till img items på listan
+        //console.log(lista);         //conslolar HTML lista som generar bilder
 
-    });
+        slideFunction(lista.querySelectorAll('li'));
+    });   
 };
+
+//----------------------------------------------//
 //Overlay--Lightbox--
 let lightBox = (value, title)=> {
     const lightBoxPic = document.getElementById('image-wrapper');//tagg för blocket där stora bilden läggs 
     lightBoxPic.innerHTML = `<img src="${value}" alt="${title}"><p>${title}</p></img>`; //skapar lightbox image
     overLay.classList.toggle('search-wrapper_overlay-hide');
     lightBoxPic.addEventListener('click', ()=> {
-        overLay.classList.add('search-wrapper_overlay-hide'); 
+        overLay.classList.add('search-wrapper_overlay-hide');
     })
-    /*
-    let currentImage = lightBoxPic;
-    console.log(currentImage);
-    */
+    console.log(lightBoxPic.innerHTML);
 }
-leftArrow.addEventListener('click', ()=> {
-    console.log('left')
-    lightBoxPic
-});
 
+//Sliderpilarna prev och next// fick det inte att funka i tid
+let slideFunction = (slideList) => {
+    //console.log(slideList); consolar ul listan och dess innehåll
+    //console.log(Object.keys(slideList));
 
-
-
+/*
+    let slide= ; 
+    leftArrow.addEventListener('click', ()=> {
+        if (slide < 0) slide = slideList.length;
+        slide--;
+        console.log(slide);
+    })
+    rightArrow.addEventListener('click', ()=> {
+        if (slide >= slideList.length -1) slide = -1;
+        slide++; 
+        console.log(slide);
+    }) 
+    */  
+}
+//slideFunction();
